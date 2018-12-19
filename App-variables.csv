@@ -1,0 +1,16 @@
+Variables,Description,Units,Available In-App?
+Time,Time in years since first CWD+ detected in 2000 in Saskatchewan,yr, User-supplied
+Sex,Deer sex: male (1) or female (0),binary, User-supplied
+Harvest,Harvest method: hunter (1) or herd reduction (0),binary, User-supplied
+Species,Deer species: mule deer (1) or white-tailed deer (0),binary, User-supplied
+CWD,CWD test result: CWD+ (1)  or  CWD-/unknown (0),binary, User-supplied
++Proximity,"Distance (km) to nearest previously detected CWD+ case in AB or SK. The app currently builds predictions off a +Proximity raster including CWD+ cases through January 2016.",km, User-supplied
+Driver,"Distance (km) to nearest river or major tributary. Classified as all stream features (GOA 2013) with the name ""river"" or ""creek"" (e.g. Ribstone Creek).",km,available for extraction
+Dstream,"Distance (km) to minor stream (ie. not a named river or creek, GOA 2013).",km,available for extraction
+Strm3km & Strm12km,Length (km) of all streams within 3 or 12 km2 circular buffer (GOA 2013).,km,available for extraction
+Cov3km & Cov12km ,"Proportion of woody cover (coniferous forest, deciduous forest, mixed forest, and shrubs) within a circular buffer with area of 3 or 12 km2 (ABMI 2000).",%,available for extraction
+Agri3km & Agri12km,Proportion of agriculture (cropland and pasture) land cover within a circular buffer with area of 3 or 12 km2 (ABMI 2000).,%,available for extraction
+Rugg3km & Rugg12km,Standard deviation in elevation (m) within a circular buffer with an area of 3 or 12 km2 (GeoBase 2011).,m,available for extraction
+Clay3km & Clay12km ,Mean % soil clay content within either a 3 or 12km2 circular buffer (AARD 2011).,%,available for extraction
+Dwell12km," Proportion of urban and rural dwellings footprint buffered 100m within a 12km2 circular buffer. The ""Urban & Rural Features"" in the ABMI Human Footprint Map (ABMI 2010).",%,available for extraction
+Hard12km ,"Proportion of urban, rural dwellings, industrial development, and hard linear features footprint buffered 100m within a 12km2 circular buffer. The ""Urban & Rural Features"", ""Industrial & Resource Extraction Features"", and ""Hard Linear Features"" in the ABMI Human Footprint Map (ABMI 2010).",%,available for extraction

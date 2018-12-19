@@ -1,0 +1,29 @@
+---
+title: "CWD Risk Report"
+subtitle: "Created by AB_CWD Shiny App" 
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: pdf_document
+params:
+  call: NA
+  reg: NA
+  title: NA
+  pred: NA
+---
+
+# Model Call
+
+```{r}
+print(params$call)
+```
+
+# Regression Results
+
+```{r}
+broom::tidy(params$reg)
+```
+
+# Predicted Risk Map
+
+```{r}
+plot(params$pred, main = params$title)
+```
