@@ -523,7 +523,7 @@ server <- shinyServer(function(input, output, session) {
         overlayGroups = c("WMUs", "Risk", "CWD+"),
         options = layersControlOptions(collapsed = FALSE)
       ) %>%
-      hideGroup(c("WMUs", "CWD+"))
+      hideGroup(c("CWD+"))
   })
 
   output$downloadMap <- downloadHandler(
