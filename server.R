@@ -304,12 +304,19 @@ server <- shinyServer(function(input, output, session) {
 
   ### Extraction Tab -- Tab 3
 
-  ## Handle my rasters
+  ## Handle rasters
+  ## If adding a new raster/variable - make sure it's name is added to this list
+  ## rasters are read in, and thus named, in alphabetical order from the rasters folder according to file name.
+  ## so if you're adding a new raster into the folder, or otherwise changing the order rasters
+  ## are read in, be careful that you get the names specified correctly so they
+  ## match the appropriate rasters.
+  ## If your changes, change the order placement of the +prox raster, be sure to update ~L435 accordingly
+  ## And please make sure that the raster names you specify match the variable names you expect to load in data/ui.
   raster_files <- list.files("data/rasters/", full.names = T)
   names(raster_files) <- c(
     "Pagri12", "Pagri3", "Clay12km", "Clay3km", "Pcover12", "Pcover3",
     "Dwell12km", "Hard12km", "Dstream", "Driver", "+Prox",
-    # this is just a place holder -- +Prox needs to be replaced reactively with input$prox
+    # this is just a place holder -- +Prox will be replaced reactively with input$prox during predicitons building
     "Rugg12km", "Rugg3km", "Strm12km", "Strm3km"
   )
 
@@ -423,8 +430,10 @@ server <- shinyServer(function(input, output, session) {
 
   stk <- reactive({
     infile <- input$newproxfile
-    # fixing the raster_file name
+
+    # fixing the prox+ raster_file name - IF raster order is changed above (~L310), this index may need to change
     names(raster_files)[11] <- input$prox
+
     stack <- stack(na.omit(raster_files[pars()[str_length(pars()) != 0]]))
     return(stack)
   })

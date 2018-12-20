@@ -5,9 +5,10 @@ library(leaflet)
 library(purrr)
 
 
+# If adding new variables/rasters: add them to this list, after the response and global variable.
+# you likely also want to add them into the choices on the regression tab,
+# to do so add them to the appropriate category within ~L80-120.
 variable_list <- list(
-  response = "cwd",
-  global = c("sp", "sex", "harv", "time", "e_min"),
   riparian = c("Driver", "Dstream", "Strm3km", "Strm12km"),
   ruggedness = c("Rugg3km", "Rugg12km"),
   landcover = c("Pcover3", "Pagri3", "Pcover12", "Pagri12"),
@@ -55,7 +56,7 @@ ui <- dashboardPage(
         tabName = "rasters", startExpanded = TRUE, icon = icon("th"),
         checkboxGroupInput("extract",
           "Extract Values to Points",
-          choices = reduce(variable_list, c)[-1 * (1:6)]
+          choices = reduce(variable_list, c)
         ),
         actionButton("extractButton", "Extract Variables!"),
         br(),
