@@ -141,9 +141,6 @@ ui <- dashboardPage(
           choices = c("Male" = 1, "Female" = 0),
           selected = 1
         ),
-        # fileInput("newproxfile", "Upload new +Proximity raster? Please ensure EPSG:26912",
-        #           accept = c("image/tiff")
-        # ),
         actionButton("buildButton", "Build Predictive Layer"),
         br(),
         br(),

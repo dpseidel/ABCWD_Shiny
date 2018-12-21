@@ -438,47 +438,6 @@ server <- shinyServer(function(input, output, session) {
     return(stack)
   })
 
-  # # if user loads a new prox file use it, else use the internal one.
-  # # this is almost completely functional but I don't recommend using it
-  # # requires allowing LARGE uploads, and ability to resample rasters on the fly
-  # # which will require a lot of memory. Easier to update rasters on the server
-  # # side as a part of regular maintanance.
-  # stk <- reactive({
-  #   infile <- input$newproxfile
-  #
-  #   # fixing the raster_file name
-  #   names(raster_files)[11] <- input$prox
-  #   stack <- stack(na.omit(raster_files[pars()[str_length(pars()) != 0]]))
-  #
-  #   if (is.null(infile)) {
-  #     # User has not uploaded a file yet
-  #     return(stack)
-  #   }
-  #
-  #   newprox <- raster(infile$datapath)
-  #   # we need resampling to match...
-  #   # fast resample with gdal warp
-  #   # this may cause issues when deployed... not sure.
-  #   tmp_fil <- tempfile(fileext = ".tif")
-  #   t1 <- c(272584.6, 5427085, 572784.6, 6093785) # xmin, ymin, xmax, ymax coordinates
-  #   t2 <- c(100, 100) # resolution
-  #   gdalwarp(
-  #     srcfile = newprox, dstfile = tmp_fil,  tr = t2, te = t1,
-  #     output_Raster = T, overwrite = T, verbose = T
-  #   )
-  #
-  #   rsmpl <- raster(tmp_fil)
-  #   names(rsmpl) <- input$prox
-  #
-  #   # drop the original e_min raster
-  #   temp_stack <- subset(stack, names(stack)[-which(names(stack) == input$prox)])
-  #
-  #   # clean_up and return a new stack
-  #   file.remove(tmp_file)
-  #   return(stack(rsmpl, temp_stack))
-  # })
-
-
   predictions <- eventReactive(input$buildButton, {
     cnt <- isolate(constants())
     names(cnt) <- c(input$date, input$sex, input$harv, input$sp)

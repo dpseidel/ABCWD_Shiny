@@ -28,6 +28,10 @@ rsconnect::deployApp(
 rsconnect::configureApp(account = "fw-habitat-aep", "ABCWD_Shiny", size = "xxlarge")
 ```
 
+The app maintainer will need special `TOKEN` and `SECRET` passcodes specific to the fw-habitat-aep.
+Any problems with these, contact Andrew Paul or Anne Hubbs. 
+
+
 Raster maintainance
 ===================
 
